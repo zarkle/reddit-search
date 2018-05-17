@@ -39,7 +39,6 @@ export default class SearchForm extends Component {
           name="quantity"
           min="1"
           max="100"
-          placeholder="Enter a number from 1-100"
           value={this.state.quantity}
           onChange={this.changeHandler}/>
 

@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import SearchForm from './SearchForm/search-form'
 import SearchResult from './SearchResultList/search-result'
 import './App.css'
 
-class App extends Component {
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      results: undefined,
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <SearchForm/>
-        <SearchResult/>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
+        <SearchForm setAppState={this.setState.bind(this)} />
+        { this.state.results ?
+        <SearchResult results={this.state.results} />
+        : undefined
+        }
       </div>
-    );
+    )
   }
 }
-
-export default App;
