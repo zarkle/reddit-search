@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './search-result.css'
 
 export default class SearchResult extends Component {
   constructor(props) {
