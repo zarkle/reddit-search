@@ -14,6 +14,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Search Reddit</h1>
         <SearchForm setAppState={this.setState.bind(this)} />
         { this.state.results ?
         <SearchResult results={this.state.results} />
