@@ -16,7 +16,7 @@ export default class SearchForm extends Component {
   submitHandler(event) {
     event.preventDefault()
     superagent.get(`https://www.reddit.com/r/${this.state.search}.json?limit=${this.state.quantity}`)
-    .then(res => this.props.setAppState({results: res.body}))
+    .then(response => this.props.setAppState({results: response.body}))
     .catch()
   }
 
