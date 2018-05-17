@@ -18,10 +18,10 @@ export default class SearchForm extends Component {
     event.preventDefault()
     superagent.get(`https://www.reddit.com/r/${this.state.search}.json?limit=${this.state.quantity}`)
     .then(response => this.props.setAppState({results: response.body.data.children}))
-    .catch(err => {
-      err = document.getElementsByTagName("input")
-      console.log(err)
-      err.map((tag) => tag.classList.add("red"))
+    .catch(error => {
+      console.error
+      let tags = document.getElementsByTagName("input")
+      // tags.map((tag) => tag.classList.add("red"))
       }
     )
   }
