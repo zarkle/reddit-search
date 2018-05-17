@@ -9,10 +9,14 @@ export default class SearchResult extends Component {
     return (
       <div className="search-result">
         <ul>
-          <li><a href={this.props.results.data.children[0].data.url}>
-            <h2>{this.props.results.data.children[0].data.title}</h2>
-            <p>{this.props.results.data.children[0].data.ups}</p>
-          </a></li>
+          {
+            this.props.results.map((topic) =>
+              <li><a href={topic.data.url}>
+                <h2>{topic.data.title}</h2>
+                <p>{topic.data.ups}</p>
+              </a></li>
+            )
+          }
         </ul>
       </div>
     )
