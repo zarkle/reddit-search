@@ -11,10 +11,10 @@ export default class SearchResult extends Component {
       <div className="search-result">
         <ul>
           {
-            this.props.results.map((topic) =>
-              <li><a href={topic.data.url}>
+            this.props.results.map((topic, i) =>
+              <li key={i}><a href={topic.data.url}>
                 <h2>{topic.data.title}</h2>
-                <p>{topic.data.ups}</p>
+                <p>Up-votes: {topic.data.ups}</p>
               </a></li>
             )
           }

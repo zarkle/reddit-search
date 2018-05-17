@@ -8,6 +8,7 @@ export default class SearchForm extends Component {
     this.state = {
       search: '',
       quantity: 1,
+      className: '',
     }
 
     this.submitHandler = this.submitHandler.bind(this)
@@ -18,11 +19,7 @@ export default class SearchForm extends Component {
     event.preventDefault()
     superagent.get(`https://www.reddit.com/r/${this.state.search}.json?limit=${this.state.quantity}`)
     .then(response => this.props.setAppState({results: response.body.data.children}))
-    .catch(error => {
-      console.error
-      let tags = document.getElementsByTagName("input")
-      // tags.map((tag) => tag.classList.add("red"))
-      }
+    .catch(error => this.setState({'className': 'err'})
     )
   }
 
@@ -34,21 +31,23 @@ export default class SearchForm extends Component {
     return (
       <div className="search-form">
         <form onSubmit={this.submitHandler}>
-        <input
-          type="text"
-          name="search"
-          value={this.state.search}
-          onChange={this.changeHandler}/>
+          <input
+            type="text"
+            name="search"
+            value={this.state.search}
+            onChange={this.changeHandler}
+            className={this.state.className} />
 
-        <input
-          type="number"
-          name="quantity"
-          min="1"
-          max="100"
-          value={this.state.quantity}
-          onChange={this.changeHandler}/>
+          <input
+            type="number"
+            name="quantity"
+            min="1"
+            max="100"
+            value={this.state.quantity}
+            onChange={this.changeHandler}
+            className={this.state.className} />
 
-        <button type="submit">Find</button>
+          <button type="submit">Find</button>
         </form>
       </div>
     )
